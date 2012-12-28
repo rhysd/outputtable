@@ -47,23 +47,21 @@ namespace output_containers_impl {
     {};
 
     template<class Tuple, std::size_t... Indices>
-    void tuple_to_stream_impl(std::ostream &ost, Tuple const&t, index_tuple<Indices...>)
+    void tuple_to_stream(std::ostream &ost, Tuple const&t, index_tuple<Indices...>)
     {
         print_args(ost, std::get<Indices>(t)...);
     }
 
-    template<class Tuple>
-    void tuple_to_stream(std::ostream &ost, Tuple const& t)
-    {
-        tuple_to_stream_impl(ost, t, typename index_range<0, std::tuple_size<Tuple>::value>::type());
-    }
 } // namespace output_containers_impl
 
 template<class... Types>
 std::ostream &operator<<(std::ostream &ost, std::tuple<Types...> const& t)
 {
     ost << "( ";
-    output_containers_impl::tuple_to_stream(ost, t);
+    output_containers_impl::tuple_to_stream(ost, t,
+            typename output_containers_impl::index_range<
+                0, std::tuple_size<std::tuple<Types...>>::value
+            >::type());
     ost << ')';
     return ost;
 }
