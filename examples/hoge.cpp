@@ -9,18 +9,6 @@
 
 #include "../include/outputtable.hpp"
 
-template<class T>
-void hoge(T)
-{
-    std::cout << "hoge1\n";
-}
-
-template<>
-void hoge(std::string s)
-{
-    std::cout << s << '\n';
-}
-
 int main()
 {
     std::vector<int> v = {1, 2, 3, 4};
