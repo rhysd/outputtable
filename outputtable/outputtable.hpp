@@ -1,6 +1,7 @@
 #if !defined OUTPUTTABLE_HPP_INCLUDED
 #define      OUTPUTTABLE_HPP_INCLUDED
 
-#include "outputtable/container.hpp"
+#include "container.hpp"
+#include "optional.hpp"
 
 #endif    // OUTPUTTABLE_HPP_INCLUDED
