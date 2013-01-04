@@ -30,9 +30,8 @@ int main()
     std::map<std::list<int>, std::vector<double>> m = {{{1, 2}, {1.1, 1.2}}, {{10, 20}, {2.1, 2.2, 2.3}}};
     std::cout << m << '\n'; // { ( { 1 2 } { 1.1 1.2 } ) ( { 10 20 } { 2.1 2.2 2.3 } ) }
 
-    boost::optional<int> b1 = 10;
-    boost::optional<int> b2 = boost::none;
-    std::cout << b1 << ", " << b2 << '\n'; // Just 10, Nothing
+    std::pair<boost::optional<int>, boost::optional<int>> op(10, boost::none);
+    std::cout << op << '\n';
 
     return 0;
 }
