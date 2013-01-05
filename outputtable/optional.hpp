@@ -8,9 +8,9 @@ template<class T>
 std::ostream &operator<<(std::ostream &ost, boost::optional<T> const& val)
 {
     if(val){
-        ost << "Just " << *val;
+        ost << "Optional " << *val;
     }else{
-        ost << "Nothing";
+        ost << "None";
     }
     return ost;
 }
