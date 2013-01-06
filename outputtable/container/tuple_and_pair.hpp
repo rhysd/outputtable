@@ -7,7 +7,7 @@
 template<class T, class U>
 std::ostream &operator<<(std::ostream &ost, std::pair<T, U> const& p)
 {
-    ost << "( " << p.first << ", " << p.second << " )";
+    ost << '(' << p.first << ", " << p.second << ')';
     return ost;
 }
 
