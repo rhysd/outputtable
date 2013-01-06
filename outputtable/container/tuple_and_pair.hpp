@@ -7,7 +7,7 @@
 template<class T, class U>
 std::ostream &operator<<(std::ostream &ost, std::pair<T, U> const& p)
 {
-    ost << "( " << p.first << " " << p.second << " )";
+    ost << "( " << p.first << ", " << p.second << " )";
     return ost;
 }
 
@@ -16,13 +16,13 @@ namespace output_containers_impl {
     template<class T>
     void print_args(std::ostream &ost, T const& t)
     {
-        ost << t << ' ';
+        ost << t;
     }
 
     template<class T, class... Args>
     void print_args(std::ostream & ost, T const& t, Args const&... args)
     {
-        ost << t << ' ';
+        ost << t << ", ";
         print_args(ost, args...);
     }
 
@@ -57,7 +57,7 @@ namespace output_containers_impl {
 template<class... Types>
 std::ostream &operator<<(std::ostream &ost, std::tuple<Types...> const& t)
 {
-    ost << "( ";
+    ost << '(';
     output_containers_impl::tuple_to_stream(ost, t,
             typename output_containers_impl::index_range<
                 0, std::tuple_size<std::tuple<Types...>>::value

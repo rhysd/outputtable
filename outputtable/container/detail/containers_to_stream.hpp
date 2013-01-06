@@ -30,9 +30,14 @@ namespace output_containers_impl {
                               typename std::enable_if< has_begin<Container>::value &&
                                                        has_end<Container>::value >::type* = 0)
     {
-        ost << "{ ";
-        for(auto const& i : c){
-            ost << i << " ";
+        ost << '{';
+        for(auto begin = std::begin(c), end = std::end(c);;){
+            ost << *begin;
+            if(++begin != end){
+                ost << ", ";
+            } else {
+                break;
+            }
         }
         ost << '}';
     }
